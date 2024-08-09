@@ -1,0 +1,29 @@
+#define pinLed_G 8
+#define pinLed_Y 9
+#define pinLed_B 10
+#define pinLed_R 11
+
+#define pinBtn_G 2
+#define pinBtn_Y 3
+#define pinBtn_B 4
+#define pinBtn_R 12
+
+#define pinPsvBzzr 5
+
+#define NUM_OF_LEDS 4
+#define NUM_OF_CHOSEN_LEDS 3
+
+int Leds[NUM_OF_LEDS] = {pinLed_G, pinLed_Y, pinLed_B, pinLed_R};
+int ChosenIndexes[NUM_OF_CHOSEN_LEDS];
+int Btns[NUM_OF_LEDS] = {pinBtn_G, pinBtn_Y, pinBtn_B, pinBtn_R};
+int val[NUM_OF_LEDS];
+int lastVal[NUM_OF_LEDS];
+unsigned long lastPressTime[NUM_OF_LEDS];
+int PressedIndexes[NUM_OF_LEDS];
+int NumOfPressedIndexes = 0;
+unsigned long gameStartTime;
+bool gameStarted = false;
+bool gameEnded = false;
+
+#define TONE_SUCCESS 1000
+#define TONE_FAILURE 500
