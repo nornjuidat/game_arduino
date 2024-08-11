@@ -1,0 +1,28 @@
+void setup() {
+  initializePins();
+  randomSeed(analogRead(A1));
+}
+
+void loop() {
+  handleGameStates();
+}
+
+void initializePins() {
+  for (int k = 0; k < NUM_OF_LEDS; k++) {
+    pinMode(Leds[k], OUTPUT);
+    pinMode(Btns[k], INPUT_PULLUP);
+    lastVal[k] = digitalRead(Btns[k]);
+    lastPressTime[k] = millis();
+  }
+  pinMode(pinPsvBzzr, OUTPUT);
+}
+
+void handleGameStates() {
+  if (gameEnded) {
+    checkForStartNewGame();
+  } else if (!gameStarted) {
+    startGame();
+  } else {
+    handleGame();
+  }
+}
