@@ -1,0 +1,6 @@
+void indicateSuccessDelayed() {
+  tone(pinPsvBzzr, TONE_SUCCESS, 500);
+  analogWrite(pinLed_G, 64); 
+  delay(1000);
+  analogWrite(pinLed_G, 0);
+}
