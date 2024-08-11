@@ -1,0 +1,12 @@
+void indicateSuccess() {
+  tone(pinPsvBzzr, TONE_SUCCESS, 500);
+  digitalWrite(pinLed_G, HIGH);
+  delay(1000);
+  digitalWrite(pinLed_G, LOW);
+}
+
+void turnOffAllLeds() {
+  for (int k = 0; k < NUM_OF_LEDS; k++) {
+    digitalWrite(Leds[k], LOW);
+  }
+}
