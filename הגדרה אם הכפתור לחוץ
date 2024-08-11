@@ -1,0 +1,29 @@
+void handlePress(int buttonIndex) {
+  if (!isButtonAlreadyPressed(buttonIndex)) {
+    PressedIndexes[NumOfPressedIndexes++] = buttonIndex;
+    digitalWrite(Leds[buttonIndex], HIGH);
+  }
+
+  if (!isButtonInChosen(buttonIndex)) {
+    indicateFailure();
+    resetGame();
+  }
+}
+
+bool isButtonAlreadyPressed(int buttonIndex) {
+  for (int i = 0; i < NumOfPressedIndexes; i++) {
+    if (PressedIndexes[i] == buttonIndex) {
+      return true;
+    }
+  }
+  return false;
+}
+
+bool isButtonInChosen(int buttonIndex) {
+  for (int i = 0; i < NUM_OF_CHOSEN_LEDS; i++) {
+    if (ChosenIndexes[i] == buttonIndex) {
+      return true;
+    }
+  }
+  return false;
+}
