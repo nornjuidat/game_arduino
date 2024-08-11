@@ -1,0 +1,18 @@
+void checkGameState() {
+  unsigned long elapsedTime = millis() - gameStartTime;
+  
+  if (elapsedTime > 1000) { 
+    if (NumOfPressedIndexes == NUM_OF_CHOSEN_LEDS) {
+      if (areAllPressedButtonsCorrect()) {
+        if (elapsedTime <= 1000) {
+          indicateSuccess();
+        } else {
+          indicateSuccessDelayed(); 
+        }
+      } else {
+        indicateFailure();
+      }
+      gameEnded = true;
+    }
+  }
+}
