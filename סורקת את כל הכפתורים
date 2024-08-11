@@ -1,0 +1,12 @@
+int GetPressedBtn() {
+  int BtnPressed = -1;
+  for (int k = 0; k < NUM_OF_LEDS; k++) {
+    val[k] = digitalRead(Btns[k]);
+    if ((val[k] == LOW) && (lastVal[k] == HIGH) && (millis() - lastPressTime[k] > 50)) {
+      lastPressTime[k] = millis();
+      BtnPressed = k;
+    }
+    lastVal[k] = val[k];
+  }
+  return BtnPressed;
+}
