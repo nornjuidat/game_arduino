@@ -1,0 +1,14 @@
+void startGame() {
+  resetGame();
+  selectRandomLeds();
+  indicateStart();
+}
+
+void resetGame() {
+  NumOfPressedIndexes = 0;
+ int NumOfChosenIndexes = 0;
+  gameStartTime = millis();
+  gameStarted = true;
+  gameEnded = false;
+  turnOffAllLeds();
+}
