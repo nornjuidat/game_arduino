@@ -1,0 +1,35 @@
+void selectRandomLeds() {
+  bool chosen[NUM_OF_LEDS] = {false, false, false, false};
+  for (int k = 0; k < NUM_OF_CHOSEN_LEDS; k++) {
+    int idx;
+    do {
+      idx = random(NUM_OF_LEDS);
+    } while (chosen[idx]);
+    chosen[idx] = true;
+    ChosenIndexes[k] = idx;
+    digitalWrite(Leds[idx], HIGH);
+    delay(1000);
+    digitalWrite(Leds[idx], LOW);
+    delay(100);
+  }
+}
+
+void indicateStart() {
+  tone(pinPsvBzzr, TONE_SUCCESS, 100);
+  delay(150);
+}
+
+void handleGame() {
+  int pressedBtn = GetPressedBtn();
+  if (pressedBtn > -1) {
+    handlePress(pressedBtn);
+  }
+  checkGameState();
+}
+
+void checkForStartNewGame() {
+  int pressedBtn = GetPressedBtn();
+  if (pressedBtn > -1) {
+    startGame();
+  }
+}
